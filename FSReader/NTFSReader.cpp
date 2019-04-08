@@ -16,17 +16,10 @@ typedef struct
 
 using namespace std;
 
-NTFSReader::NTFSReader(HANDLE fileHandle): BaseReader(fileHandle)
+NTFSReader::NTFSReader(FileReader* fileReader): BaseReader(fileReader)
 {
-	LARGE_INTEGER position = { 0 };
-	BOOL ok = SetFilePointerEx(fileHandle, position, nullptr, FILE_BEGIN);
-
+	BYTE *buffer = FileDataReader->ReadData(0, 1024);
 	NTFSBootRecord *ntfsBootRecord;
-	int bufferSize = 1024;
-	BYTE buffer[1024];
-	DWORD read;
-	ok = ReadFile(fileHandle, buffer, bufferSize, &read, nullptr);
-
 	ntfsBootRecord = (NTFSBootRecord*)buffer;
 
 	BytesPerSector = *(unsigned short*)ntfsBootRecord->BytesPerSector;
@@ -42,27 +35,4 @@ string NTFSReader::GetFileSystemName()
 	return "NTFS";
 }
 
-void NTFSReader::ShowClusterByNumber(int clusterNumber)
-{
-	LARGE_INTEGER position = { (clusterNumber - 1)*BytesPerCluster };
-	BOOL ok = SetFilePointerEx(FileHandle, position, nullptr, FILE_BEGIN);
-	BYTE *buffer = new BYTE[BytesPerCluster];
-	DWORD read;
-	ok = ReadFile(FileHandle, buffer, BytesPerCluster, &read, nullptr);
-
-	for (int i = 1; i < BytesPerCluster + 1; i++) {
-		printf("%02x ", buffer[i - 1]);
-
-		if (i % 16 == 0) {
-			cout << endl;
-		}
-		else if (i % 8 == 0)
-		{
-			cout << "  ";
-		}
-	}
-}
-
-NTFSReader::~NTFSReader()
-{
-}
+NTFSReader::~NTFSReader() { }

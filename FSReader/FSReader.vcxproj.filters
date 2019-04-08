@@ -36,6 +36,9 @@
     <ClInclude Include="NTFSReader.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="FileReader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="NTFSReader.cpp">
       <Filter>Исходные файлы\FileSystemReaders</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

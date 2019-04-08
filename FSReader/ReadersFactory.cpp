@@ -1,5 +1,4 @@
 #include "pch.h"
-#include <windows.h>
 #include <iostream> 
 #include "ReadersFactory.h"
 #include "NTFSReader.h"
@@ -12,32 +11,20 @@ typedef struct
 	char OEMName[8];
 } OEMName;
 
-ReadersFactory::ReadersFactory()
+ReadersFactory::ReadersFactory() { }
+
+BaseReader* ReadersFactory::CreateReader(FileReader* fileReader)
 {
-}
-
-BaseReader* ReadersFactory::CreateReader(HANDLE fileHandle)
-{
-	LARGE_INTEGER position = { 0 };
-	BOOL ok = SetFilePointerEx(fileHandle, position, nullptr, FILE_BEGIN);
-
-	OEMName *oemName;
-	const int bufferSize = 1024;
-	BYTE buffer[bufferSize];
-	DWORD read;
-	ok = ReadFile(fileHandle, buffer, bufferSize, &read, nullptr);
-
-	oemName = (OEMName*)buffer;
+	// Todo понять почему не работает с маленькими числами
+	OEMName *oemName = (OEMName*)fileReader->ReadData(0, 1024);
 	
 	if (strcmp(oemName->OEMName, "NTFS    ") == 0) {
-		return new NTFSReader(fileHandle);
+		return new NTFSReader(fileReader);
 	}
 
-	// Other file systems
+	// Можно написать readerы для других файловых систем, досточно реализовать BaseReader
 
 	throw runtime_error("Unsupported file system or file type");
 }
 
-ReadersFactory::~ReadersFactory()
-{
-}
+ReadersFactory::~ReadersFactory() { }
