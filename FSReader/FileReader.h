@@ -11,7 +11,6 @@ class FileReader
 private:
 	HANDLE _fileHandle;
 public:
-	FileReader();
 	FileReader(string fileName);
 
 	BYTE* ReadData(int startPosition, int bufferSize);

@@ -3,10 +3,6 @@
 
 using namespace std;
 
-FileReader::FileReader()
-{
-}
-
 FileReader::FileReader(string fileName)
 {
 	wstring wFileName(fileName.begin(), fileName.end());

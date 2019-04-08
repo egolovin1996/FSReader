@@ -6,28 +6,28 @@ using namespace std;
 
 BaseReader::BaseReader(FileReader* fileReader) 
 {
-	FileDataReader = fileReader;
+	_FileDataReader = fileReader;
 }
 
 void BaseReader::ShowInfo()
 {
 	cout << "File system name: " << GetFileSystemName() << endl;
-	cout << "Bytes per sector: " << BytesPerSector << endl;
-	cout << "Bytes per cluster: " << BytesPerCluster << endl;
-	cout << "Total sectors: " << TotalSectors << endl;
-	cout << "Total clusters: " << TotalClusters << endl;
-	cout << "Total bytes: " << TotalBytes << endl;
+	cout << "Bytes per sector: " << _BytesPerSector << endl;
+	cout << "Bytes per cluster: " << _BytesPerCluster << endl;
+	cout << "Total sectors: " << _TotalSectors << endl;
+	cout << "Total clusters: " << _TotalClusters << endl;
+	cout << "Total bytes: " << _TotalBytes << endl;
 }
 
 void BaseReader::ShowClusterByNumber(int clusterNumber)
 {
-	if (clusterNumber < 1 || clusterNumber > TotalClusters) 
+	if (clusterNumber < 1 || clusterNumber > _TotalClusters) 
 	{
 		throw runtime_error("Wrong cluster number");
 	}
 
-	int clusterPosition = (clusterNumber - 1)*BytesPerCluster;
-	BYTE *buffer = FileDataReader->ReadData(clusterPosition, BytesPerCluster);
+	int clusterPosition = (clusterNumber - 1)*_BytesPerCluster;
+	BYTE *buffer = _FileDataReader->ReadData(clusterPosition, _BytesPerCluster);
 
 	ShowHexData(buffer);
 }
@@ -36,7 +36,7 @@ BaseReader::~BaseReader() { }
 
 void BaseReader::ShowHexData(BYTE * buffer)
 {
-	for (int i = 1; i < BytesPerCluster + 1; i++) {
+	for (int i = 1; i < _BytesPerCluster + 1; i++) {
 		printf("%02x ", buffer[i - 1]);
 
 		if (i % 16 == 0) {

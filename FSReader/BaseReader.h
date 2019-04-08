@@ -11,12 +11,12 @@ using namespace std;
 class BaseReader
 {
 protected:
-	FileReader* FileDataReader;
-	int BytesPerSector;
-	int BytesPerCluster;
-	int TotalSectors;
-	int TotalClusters;
-	int TotalBytes;
+	FileReader* _FileDataReader;
+	int _BytesPerSector;
+	int _BytesPerCluster;
+	int _TotalSectors;
+	int _TotalClusters;
+	int _TotalBytes;
 
 public:
 	BaseReader(FileReader* fileReader);

@@ -18,16 +18,14 @@ using namespace std;
 
 NTFSReader::NTFSReader(FileReader* fileReader): BaseReader(fileReader)
 {
-	BYTE *buffer = FileDataReader->ReadData(0, 1024);
-	NTFSBootRecord *ntfsBootRecord;
-	ntfsBootRecord = (NTFSBootRecord*)buffer;
+	NTFSBootRecord *ntfsBootRecord = (NTFSBootRecord*)_FileDataReader->ReadData(0, 1024);
 
-	BytesPerSector = *(unsigned short*)ntfsBootRecord->BytesPerSector;
+	_BytesPerSector = *(unsigned short*)ntfsBootRecord->BytesPerSector;
 	int sectorsPerCluster = *(unsigned short*)ntfsBootRecord->SectorsPerCluster;
-	BytesPerCluster = BytesPerSector * sectorsPerCluster;
-	TotalSectors = ntfsBootRecord->TotalSectors;
-	TotalClusters = TotalSectors / sectorsPerCluster;
-	TotalBytes = BytesPerSector * TotalSectors;
+	_BytesPerCluster = _BytesPerSector * sectorsPerCluster;
+	_TotalSectors = ntfsBootRecord->TotalSectors;
+	_TotalClusters = _TotalSectors / sectorsPerCluster;
+	_TotalBytes = _BytesPerSector * _TotalSectors;
 }
 
 string NTFSReader::GetFileSystemName()
