@@ -152,12 +152,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseReader.h" />
+    <ClInclude Include="FileReader.h" />
     <ClInclude Include="NTFSReader.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ReadersFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseReader.cpp" />
+    <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="FSReader.cpp" />
     <ClCompile Include="NTFSReader.cpp" />
     <ClCompile Include="pch.cpp">

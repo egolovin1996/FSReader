@@ -1,15 +1,12 @@
 #include "pch.h"
 #include "BaseReader.h"
-
-#include <string> 
-#include <iostream> 
-#include <windows.h>
+#include "FileReader.h"
 
 using namespace std;
 
-BaseReader::BaseReader(HANDLE fileHandle)
+BaseReader::BaseReader(FileReader* fileReader) 
 {
-	FileHandle = fileHandle;
+	FileDataReader = fileReader;
 }
 
 void BaseReader::ShowInfo()
@@ -22,7 +19,32 @@ void BaseReader::ShowInfo()
 	cout << "Total bytes: " << TotalBytes << endl;
 }
 
-BaseReader::~BaseReader()
+void BaseReader::ShowClusterByNumber(int clusterNumber)
 {
+	if (clusterNumber < 1 || clusterNumber > TotalClusters) 
+	{
+		throw runtime_error("Wrong cluster number");
+	}
 
+	int clusterPosition = (clusterNumber - 1)*BytesPerCluster;
+	BYTE *buffer = FileDataReader->ReadData(clusterPosition, BytesPerCluster);
+
+	ShowHexData(buffer);
+}
+
+BaseReader::~BaseReader() { }
+
+void BaseReader::ShowHexData(BYTE * buffer)
+{
+	for (int i = 1; i < BytesPerCluster + 1; i++) {
+		printf("%02x ", buffer[i - 1]);
+
+		if (i % 16 == 0) {
+			cout << endl;
+		}
+		else if (i % 8 == 0)
+		{
+			cout << "  ";
+		}
+	}
 }
