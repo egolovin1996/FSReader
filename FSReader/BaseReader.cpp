@@ -32,6 +32,11 @@ void BaseReader::ShowClusterByNumber(int clusterNumber)
 	ShowHexData(buffer);
 }
 
+int BaseReader::GetTotalClustersCount()
+{
+	return 0;
+}
+
 BaseReader::~BaseReader() { }
 
 void BaseReader::ShowHexData(BYTE * buffer)

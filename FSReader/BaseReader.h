@@ -23,6 +23,7 @@ public:
 
 	void ShowInfo();
 	void ShowClusterByNumber(int clusterNumber);
+	int GetTotalClustersCount();
 
 	virtual string GetFileSystemName() = 0;
 

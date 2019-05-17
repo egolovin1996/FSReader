@@ -5,6 +5,7 @@
 #include "ReadersFactory.h"
 #include "BaseReader.h"
 #include "FileReader.h"
+#include "FileReaderWithClusterIteration.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ int main(int argc, char** argv)
 
 	FileReader *fileReader = NULL;
 	BaseReader *reader = NULL;
+	FileReaderWithClusterIteration *clusterIterator = NULL;
 
 	try {
 		fileReader = new FileReader(fileName);
@@ -31,6 +33,10 @@ int main(int argc, char** argv)
 		int clusterNumber;
 		cin >> clusterNumber;
 		reader->ShowClusterByNumber(clusterNumber);
+
+		clusterIterator = new FileReaderWithClusterIteration(reader);
+		clusterIterator->ShowCluster();
+		clusterIterator->ShowCluster();
 	}
 	catch (runtime_error e) {
 		cout << "Error: " << e.what() << endl;
