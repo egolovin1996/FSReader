@@ -7,7 +7,7 @@
 #include "FileReader.h"
 #include "Cluster.h"
 #include "ClusterIterator.h"
-#include "EmptyClusterIterator.h"
+#include "IteratorsFactory.h"
 
 using namespace std;
 
@@ -39,14 +39,14 @@ int main(int argc, char** argv)
 		//reader->GetClusterByNumber(clusterNumber);
 
 		cout << "Read first cluster" << endl;
-		clusterIterator = new ClusterIterator(reader);
+		clusterIterator = IteratorsFactory::GetClusterIterator(reader);
 		if (clusterIterator->HasMore()) {
 			Cluster* cluster = clusterIterator->GetCluster();
 			cluster->ShowHexData();
 		}
 
 		cout << "Read first empty cluster" << endl;
-		emptyClusterIterator = new EmptyClusterIterator(clusterIterator);
+		emptyClusterIterator = IteratorsFactory::GetEmptyClusterIterator(reader);
 		if (emptyClusterIterator->HasMore()) {
 			Cluster* emptyCluster = emptyClusterIterator->GetCluster();
 			emptyCluster->ShowHexData();
