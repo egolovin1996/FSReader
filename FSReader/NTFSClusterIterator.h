@@ -9,4 +9,3 @@ public:
 	NTFSClusterIterator(BaseReader* reader);
 	~NTFSClusterIterator();
 };
-

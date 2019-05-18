@@ -1,6 +1,8 @@
 #pragma once
 #include "BaseIteratorsFactory.h"
 #include "BaseClusterIterator.h"
+#include "BaseReader.h"
+#include "NTFSClusterIterator.h"
 
 class NTFSIteratorsFactory :
 	public BaseIteratorsFactory
@@ -8,8 +10,8 @@ class NTFSIteratorsFactory :
 public:
 	NTFSIteratorsFactory();
 
-	BaseClusterIterator* CreateClusterIterator(BaseReader* fileReader);
-	BaseClusterIterator* CreateEmptyClusterIterator(BaseReader* fileReader);
+	BaseClusterIterator* CreateClusterIterator(BaseReader* fileReader) override;
+	BaseClusterIterator* CreateEmptyClusterIterator(BaseReader* fileReader) override;
 
 	~NTFSIteratorsFactory();
 };

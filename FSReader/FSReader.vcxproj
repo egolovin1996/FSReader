@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseEmptyClusterIterator.h" />
     <ClInclude Include="BaseReader.h" />
     <ClInclude Include="BaseIteratorsFactory.h" />
     <ClInclude Include="FileReader.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="ReadersCreator.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseEmptyClusterIterator.cpp" />
     <ClCompile Include="BaseReader.cpp" />
     <ClCompile Include="BaseIteratorsFactory.cpp" />
     <ClCompile Include="FileReader.cpp" />

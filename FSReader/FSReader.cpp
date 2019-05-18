@@ -7,6 +7,8 @@
 #include "FileReader.h"
 #include "BaseClusterIterator.h"
 #include "NTFSClusterIterator.h"
+#include "BaseIteratorsFactory.h"
+#include "NTFSIteratorsFactory.h"
 
 using namespace std;
 
@@ -24,6 +26,7 @@ int main(int argc, char** argv)
 	FileReader *fileReader = NULL;
 	BaseReader *reader = NULL;
 	BaseClusterIterator *clusterIterator = NULL;
+	NTFSIteratorsFactory *iteratorsFactory = NULL;
 
 	try {
 		fileReader = new FileReader(fileName);
@@ -35,9 +38,9 @@ int main(int argc, char** argv)
 		cin >> clusterNumber;
 		reader->ShowClusterByNumber(clusterNumber);
 
-		clusterIterator = new NTFSClusterIterator(reader);
-		clusterIterator->ShowCluster();
-		clusterIterator->ShowCluster();
+		iteratorsFactory = new NTFSIteratorsFactory();
+		clusterIterator = iteratorsFactory->CreateClusterIterator(reader);
+		clusterIterator = iteratorsFactory->CreateEmptyClusterIterator(reader);
 	}
 	catch (runtime_error e) {
 		cout << "Error: " << e.what() << endl;
@@ -45,4 +48,6 @@ int main(int argc, char** argv)
 
 	delete reader;
 	delete fileReader;
+	delete clusterIterator;
+	delete iteratorsFactory;
 }

@@ -1,14 +1,11 @@
 #include "pch.h"
 #include "NTFSIteratorsFactory.h"
 
-
-NTFSIteratorsFactory::NTFSIteratorsFactory()
-{
-}
+NTFSIteratorsFactory::NTFSIteratorsFactory() { }
 
 BaseClusterIterator * NTFSIteratorsFactory::CreateClusterIterator(BaseReader * fileReader)
 {
-	return nullptr;
+	return new NTFSClusterIterator(fileReader);
 }
 
 BaseClusterIterator * NTFSIteratorsFactory::CreateEmptyClusterIterator(BaseReader * fileReader)
@@ -16,7 +13,4 @@ BaseClusterIterator * NTFSIteratorsFactory::CreateEmptyClusterIterator(BaseReade
 	return nullptr;
 }
 
-
-NTFSIteratorsFactory::~NTFSIteratorsFactory()
-{
-}
+NTFSIteratorsFactory::~NTFSIteratorsFactory() { }

@@ -21,9 +21,10 @@ protected:
 public:
 	BaseReader(FileReader* fileReader);
 
-	void ShowInfo();
-	void ShowClusterByNumber(int clusterNumber);
+	BYTE* GetClusterByNumber(int clusterNumber);
 	int GetTotalClustersCount();
+	void ShowClusterByNumber(int clusterNumber);
+	void ShowInfo();
 
 	virtual string GetFileSystemName() = 0;
 

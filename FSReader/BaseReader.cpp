@@ -9,6 +9,30 @@ BaseReader::BaseReader(FileReader* fileReader)
 	_FileDataReader = fileReader;
 }
 
+int BaseReader::GetTotalClustersCount()
+{
+	return _TotalClusters;
+}
+
+BYTE * BaseReader::GetClusterByNumber(int clusterNumber)
+{
+	if (clusterNumber < 1 || clusterNumber > _TotalClusters)
+	{
+		throw runtime_error("Wrong cluster number");
+	}
+
+	int clusterPosition = (clusterNumber - 1)*_BytesPerCluster;
+	BYTE *result = _FileDataReader->ReadData(clusterPosition, _BytesPerCluster);
+
+	return result;
+}
+
+void BaseReader::ShowClusterByNumber(int clusterNumber)
+{
+	BYTE *buffer = GetClusterByNumber(clusterNumber);
+	ShowHexData(buffer);
+}
+
 void BaseReader::ShowInfo()
 {
 	cout << "File system name: " << GetFileSystemName() << endl;
@@ -17,24 +41,6 @@ void BaseReader::ShowInfo()
 	cout << "Total sectors: " << _TotalSectors << endl;
 	cout << "Total clusters: " << _TotalClusters << endl;
 	cout << "Total bytes: " << _TotalBytes << endl;
-}
-
-void BaseReader::ShowClusterByNumber(int clusterNumber)
-{
-	if (clusterNumber < 1 || clusterNumber > _TotalClusters) 
-	{
-		throw runtime_error("Wrong cluster number");
-	}
-
-	int clusterPosition = (clusterNumber - 1)*_BytesPerCluster;
-	BYTE *buffer = _FileDataReader->ReadData(clusterPosition, _BytesPerCluster);
-
-	ShowHexData(buffer);
-}
-
-int BaseReader::GetTotalClustersCount()
-{
-	return 0;
 }
 
 BaseReader::~BaseReader() { }

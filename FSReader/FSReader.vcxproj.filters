@@ -54,6 +54,9 @@
     <ClInclude Include="BaseIteratorsFactory.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="BaseEmptyClusterIterator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="BaseIteratorsFactory.cpp">
       <Filter>Исходные файлы\FileSystemReaders\Factories\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseEmptyClusterIterator.cpp">
+      <Filter>Исходные файлы\FileSystemReaders\Base</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class BaseClusterIterator
+class BaseClusterIterator:
 {
 protected:
 	int _CurrentClusterNumber;
@@ -12,8 +12,8 @@ protected:
 public:
 	BaseClusterIterator(BaseReader* reader);
 
-	void ShowCluster();
-	bool HasMore();
+	virtual void ShowCluster();
+	virtual bool HasMore();
 
 	~BaseClusterIterator();
 };
