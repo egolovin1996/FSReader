@@ -22,9 +22,6 @@
     <Filter Include="Исходные файлы\FileSystemReaders\Base">
       <UniqueIdentifier>{2a4b380b-265d-4d0e-9aaf-37b99f379f4a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\FileSystemReaders\Factories\Base">
-      <UniqueIdentifier>{3a0f3528-5ab7-46af-bf6a-34e34f2a1eeb}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -39,22 +36,19 @@
     <ClInclude Include="FileReader.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="BaseClusterIterator.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="NTFSClusterIterator.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="NTFSIteratorsFactory.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ReadersCreator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="BaseIteratorsFactory.h">
+    <ClInclude Include="ClusterIterator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="BaseEmptyClusterIterator.h">
+    <ClInclude Include="EmptyClusterIterator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IteratorsFactory.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Cluster.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,23 +68,20 @@
     <ClCompile Include="FileReader.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="BaseClusterIterator.cpp">
-      <Filter>Исходные файлы\FileSystemReaders\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="NTFSClusterIterator.cpp">
-      <Filter>Исходные файлы\FileSystemReaders</Filter>
-    </ClCompile>
-    <ClCompile Include="NTFSIteratorsFactory.cpp">
-      <Filter>Исходные файлы\FileSystemReaders\Factories</Filter>
-    </ClCompile>
     <ClCompile Include="ReadersCreator.cpp">
       <Filter>Исходные файлы\FileSystemReaders\Factories</Filter>
     </ClCompile>
-    <ClCompile Include="BaseIteratorsFactory.cpp">
-      <Filter>Исходные файлы\FileSystemReaders\Factories\Base</Filter>
+    <ClCompile Include="Cluster.cpp">
+      <Filter>Исходные файлы\FileSystemReaders</Filter>
     </ClCompile>
-    <ClCompile Include="BaseEmptyClusterIterator.cpp">
-      <Filter>Исходные файлы\FileSystemReaders\Base</Filter>
+    <ClCompile Include="IteratorsFactory.cpp">
+      <Filter>Исходные файлы\FileSystemReaders\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ClusterIterator.cpp">
+      <Filter>Исходные файлы\FileSystemReaders</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyClusterIterator.cpp">
+      <Filter>Исходные файлы\FileSystemReaders</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

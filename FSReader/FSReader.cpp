@@ -5,10 +5,9 @@
 #include "ReadersCreator.h"
 #include "BaseReader.h"
 #include "FileReader.h"
-#include "BaseClusterIterator.h"
-#include "NTFSClusterIterator.h"
-#include "BaseIteratorsFactory.h"
-#include "NTFSIteratorsFactory.h"
+#include "Cluster.h"
+#include "ClusterIterator.h"
+#include "EmptyClusterIterator.h"
 
 using namespace std;
 
@@ -25,22 +24,33 @@ int main(int argc, char** argv)
 
 	FileReader *fileReader = NULL;
 	BaseReader *reader = NULL;
-	BaseClusterIterator *clusterIterator = NULL;
-	NTFSIteratorsFactory *iteratorsFactory = NULL;
+	ClusterIterator *clusterIterator = NULL;
+	ClusterIterator *emptyClusterIterator = NULL;
 
 	try {
 		fileReader = new FileReader(fileName);
 		reader = ReadersCreator::CreateReader(fileReader);
 		reader->ShowInfo();
 
-		cout << "Enter cluster number" << endl;
-		int clusterNumber;
-		cin >> clusterNumber;
-		reader->ShowClusterByNumber(clusterNumber);
+		// Чтение кластеров по номеру
+		//cout << "Enter cluster number" << endl;
+		//int clusterNumber;
+		//cin >> clusterNumber;
+		//reader->GetClusterByNumber(clusterNumber);
 
-		iteratorsFactory = new NTFSIteratorsFactory();
-		clusterIterator = iteratorsFactory->CreateClusterIterator(reader);
-		clusterIterator = iteratorsFactory->CreateEmptyClusterIterator(reader);
+		cout << "Read first cluster" << endl;
+		clusterIterator = new ClusterIterator(reader);
+		if (clusterIterator->HasMore()) {
+			Cluster* cluster = clusterIterator->GetCluster();
+			cluster->ShowHexData();
+		}
+
+		cout << "Read first empty cluster" << endl;
+		emptyClusterIterator = new EmptyClusterIterator(clusterIterator);
+		if (emptyClusterIterator->HasMore()) {
+			Cluster* emptyCluster = emptyClusterIterator->GetCluster();
+			emptyCluster->ShowHexData();
+		}
 	}
 	catch (runtime_error e) {
 		cout << "Error: " << e.what() << endl;
@@ -49,5 +59,4 @@ int main(int argc, char** argv)
 	delete reader;
 	delete fileReader;
 	delete clusterIterator;
-	delete iteratorsFactory;
 }

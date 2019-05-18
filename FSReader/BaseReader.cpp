@@ -14,7 +14,7 @@ int BaseReader::GetTotalClustersCount()
 	return _TotalClusters;
 }
 
-BYTE * BaseReader::GetClusterByNumber(int clusterNumber)
+Cluster * BaseReader::GetClusterByNumber(int clusterNumber)
 {
 	if (clusterNumber < 1 || clusterNumber > _TotalClusters)
 	{
@@ -22,15 +22,10 @@ BYTE * BaseReader::GetClusterByNumber(int clusterNumber)
 	}
 
 	int clusterPosition = (clusterNumber - 1)*_BytesPerCluster;
-	BYTE *result = _FileDataReader->ReadData(clusterPosition, _BytesPerCluster);
+	BYTE *data = _FileDataReader->ReadData(clusterPosition, _BytesPerCluster);
+	Cluster *result = new Cluster(data, _BytesPerCluster);
 
 	return result;
-}
-
-void BaseReader::ShowClusterByNumber(int clusterNumber)
-{
-	BYTE *buffer = GetClusterByNumber(clusterNumber);
-	ShowHexData(buffer);
 }
 
 void BaseReader::ShowInfo()
@@ -44,18 +39,3 @@ void BaseReader::ShowInfo()
 }
 
 BaseReader::~BaseReader() { }
-
-void BaseReader::ShowHexData(BYTE * buffer)
-{
-	for (int i = 1; i < _BytesPerCluster + 1; i++) {
-		printf("%02x ", buffer[i - 1]);
-
-		if (i % 16 == 0) {
-			cout << endl;
-		}
-		else if (i % 8 == 0)
-		{
-			cout << "  ";
-		}
-	}
-}

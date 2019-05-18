@@ -5,6 +5,7 @@
 #include <windows.h>
 
 #include "FileReader.h"
+#include "Cluster.h"
 
 using namespace std;
 
@@ -21,15 +22,12 @@ protected:
 public:
 	BaseReader(FileReader* fileReader);
 
-	BYTE* GetClusterByNumber(int clusterNumber);
+	Cluster* GetClusterByNumber(int clusterNumber);
 	int GetTotalClustersCount();
-	void ShowClusterByNumber(int clusterNumber);
 	void ShowInfo();
 
 	virtual string GetFileSystemName() = 0;
 
 	~BaseReader();
-private:
-	void ShowHexData(BYTE *buffer);
 };
 

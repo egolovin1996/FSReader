@@ -151,26 +151,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BaseEmptyClusterIterator.h" />
+    <ClInclude Include="Cluster.h" />
+    <ClInclude Include="EmptyClusterIterator.h" />
     <ClInclude Include="BaseReader.h" />
-    <ClInclude Include="BaseIteratorsFactory.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="BaseClusterIterator.h" />
-    <ClInclude Include="NTFSClusterIterator.h" />
-    <ClInclude Include="NTFSIteratorsFactory.h" />
+    <ClInclude Include="ClusterIterator.h" />
+    <ClInclude Include="IteratorsFactory.h" />
     <ClInclude Include="NTFSReader.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ReadersCreator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BaseEmptyClusterIterator.cpp" />
+    <ClCompile Include="Cluster.cpp" />
+    <ClCompile Include="EmptyClusterIterator.cpp" />
     <ClCompile Include="BaseReader.cpp" />
-    <ClCompile Include="BaseIteratorsFactory.cpp" />
     <ClCompile Include="FileReader.cpp" />
-    <ClCompile Include="BaseClusterIterator.cpp" />
+    <ClCompile Include="ClusterIterator.cpp" />
     <ClCompile Include="FSReader.cpp" />
-    <ClCompile Include="NTFSClusterIterator.cpp" />
-    <ClCompile Include="NTFSIteratorsFactory.cpp" />
+    <ClCompile Include="IteratorsFactory.cpp" />
     <ClCompile Include="NTFSReader.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

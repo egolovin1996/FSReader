@@ -1,20 +1,21 @@
 #pragma once
 #include "BaseReader.h"
+#include "BaseReader.h"
 
 using namespace std;
 
-class BaseClusterIterator:
+class ClusterIterator
 {
 protected:
 	int _CurrentClusterNumber;
 	BaseReader* _Reader;
 
 public:
-	BaseClusterIterator(BaseReader* reader);
+	ClusterIterator(BaseReader* reader);
 
-	virtual void ShowCluster();
+	virtual Cluster* GetCluster();
 	virtual bool HasMore();
 
-	~BaseClusterIterator();
+	~ClusterIterator();
 };
 
