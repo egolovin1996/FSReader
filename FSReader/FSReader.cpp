@@ -2,10 +2,11 @@
 #include <string> 
 #include <iostream> 
 #include <windows.h> 
-#include "ReadersFactory.h"
+#include "ReadersCreator.h"
 #include "BaseReader.h"
 #include "FileReader.h"
-#include "FileReaderWithClusterIteration.h"
+#include "BaseClusterIterator.h"
+#include "NTFSClusterIterator.h"
 
 using namespace std;
 
@@ -22,11 +23,11 @@ int main(int argc, char** argv)
 
 	FileReader *fileReader = NULL;
 	BaseReader *reader = NULL;
-	FileReaderWithClusterIteration *clusterIterator = NULL;
+	BaseClusterIterator *clusterIterator = NULL;
 
 	try {
 		fileReader = new FileReader(fileName);
-		reader = ReadersFactory::CreateReader(fileReader);
+		reader = ReadersCreator::CreateReader(fileReader);
 		reader->ShowInfo();
 
 		cout << "Enter cluster number" << endl;
@@ -34,7 +35,7 @@ int main(int argc, char** argv)
 		cin >> clusterNumber;
 		reader->ShowClusterByNumber(clusterNumber);
 
-		clusterIterator = new FileReaderWithClusterIteration(reader);
+		clusterIterator = new NTFSClusterIterator(reader);
 		clusterIterator->ShowCluster();
 		clusterIterator->ShowCluster();
 	}

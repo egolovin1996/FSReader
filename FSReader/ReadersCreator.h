@@ -3,13 +3,13 @@
 #include "BaseReader.h"
 #include "FileReader.h"
 
-class ReadersFactory
+class ReadersCreator
 {
 public:
 	static BaseReader* CreateReader(FileReader* fileReader);
 
 private:
-	ReadersFactory();
-	~ReadersFactory();
+	ReadersCreator();
+	~ReadersCreator();
 };
 

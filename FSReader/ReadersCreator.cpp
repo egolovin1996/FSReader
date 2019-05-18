@@ -1,6 +1,6 @@
 #include "pch.h"
 #include <iostream> 
-#include "ReadersFactory.h"
+#include "ReadersCreator.h"
 #include "NTFSReader.h"
 
 using namespace std;
@@ -11,9 +11,9 @@ typedef struct
 	char OEMName[8];
 } OEMName;
 
-ReadersFactory::ReadersFactory() { }
+ReadersCreator::ReadersCreator() { }
 
-BaseReader* ReadersFactory::CreateReader(FileReader* fileReader)
+BaseReader* ReadersCreator::CreateReader(FileReader* fileReader)
 {
 	// Todo понять почему не работает с маленькими числами
 	OEMName *oemName = (OEMName*)fileReader->ReadData(0, 1024);
@@ -27,4 +27,4 @@ BaseReader* ReadersFactory::CreateReader(FileReader* fileReader)
 	throw runtime_error("Unsupported file system or file type");
 }
 
-ReadersFactory::~ReadersFactory() { }
+ReadersCreator::~ReadersCreator() { }

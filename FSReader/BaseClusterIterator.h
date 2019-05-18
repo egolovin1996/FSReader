@@ -3,18 +3,18 @@
 
 using namespace std;
 
-class FileReaderWithClusterIteration
+class BaseClusterIterator
 {
 protected:
 	int _CurrentClusterNumber;
 	BaseReader* _Reader;
 
 public:
-	FileReaderWithClusterIteration(BaseReader* reader);
+	BaseClusterIterator(BaseReader* reader);
 
 	void ShowCluster();
 	bool HasMore();
 
-	~FileReaderWithClusterIteration();
+	~BaseClusterIterator();
 };
 

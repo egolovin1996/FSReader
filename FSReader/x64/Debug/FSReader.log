@@ -1,10 +1,2 @@
-﻿  pch.cpp
-  BaseReader.cpp
-  FileReader.cpp
-c:\projects\fsreader\fsreader\filereader.cpp(26): warning C4838: преобразование из "int" в "DWORD" требует сужающего преобразования
-  FileReaderWithClusterIteration.cpp
-  FSReader.cpp
-  NTFSReader.cpp
-  ReadersFactory.cpp
-  Создание кода...
+﻿  NTFSIteratorsFactory.cpp
   FSReader.vcxproj -> C:\Projects\FSReader\x64\Debug\FSReader.exe
