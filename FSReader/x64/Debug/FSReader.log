@@ -1,4 +1,5 @@
-﻿  FSReader.cpp
-  ReadersCreator.cpp
-  Создание кода...
+﻿  EXFATReader.cpp
+c:\projects\fsreader\fsreader\exfatreader.cpp(25): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+c:\projects\fsreader\fsreader\exfatreader.cpp(26): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+c:\projects\fsreader\fsreader\exfatreader.cpp(28): warning C4244: =: преобразование "ULONGLONG" в "int", возможна потеря данных
   FSReader.vcxproj -> C:\Projects\FSReader\x64\Debug\FSReader.exe
