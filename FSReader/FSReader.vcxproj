@@ -154,6 +154,8 @@
     <ClInclude Include="Cluster.h" />
     <ClInclude Include="EmptyClusterIterator.h" />
     <ClInclude Include="BaseReader.h" />
+    <ClInclude Include="EXFATReader.h" />
+    <ClInclude Include="FATReader.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="ClusterIterator.h" />
     <ClInclude Include="IteratorsFactory.h" />
@@ -165,6 +167,8 @@
     <ClCompile Include="Cluster.cpp" />
     <ClCompile Include="EmptyClusterIterator.cpp" />
     <ClCompile Include="BaseReader.cpp" />
+    <ClCompile Include="EXFATReader.cpp" />
+    <ClCompile Include="FATReader.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="ClusterIterator.cpp" />
     <ClCompile Include="FSReader.cpp" />

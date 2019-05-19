@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseReader.h"
-
 #include "FileReader.h"
 
 using namespace std;

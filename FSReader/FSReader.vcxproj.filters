@@ -51,6 +51,12 @@
     <ClInclude Include="Cluster.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="FATReader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="EXFATReader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -81,6 +87,12 @@
       <Filter>Исходные файлы\FileSystemReaders</Filter>
     </ClCompile>
     <ClCompile Include="EmptyClusterIterator.cpp">
+      <Filter>Исходные файлы\FileSystemReaders</Filter>
+    </ClCompile>
+    <ClCompile Include="FATReader.cpp">
+      <Filter>Исходные файлы\FileSystemReaders</Filter>
+    </ClCompile>
+    <ClCompile Include="EXFATReader.cpp">
       <Filter>Исходные файлы\FileSystemReaders</Filter>
     </ClCompile>
   </ItemGroup>

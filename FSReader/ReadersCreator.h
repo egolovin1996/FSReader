@@ -2,6 +2,9 @@
 
 #include "BaseReader.h"
 #include "FileReader.h"
+#include "NTFSReader.h"
+#include "FATReader.h"
+#include "EXFATReader.h"
 
 class ReadersCreator
 {

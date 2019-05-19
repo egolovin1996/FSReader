@@ -1,7 +1,7 @@
 #include "pch.h"
 #include <iostream> 
 #include "ReadersCreator.h"
-#include "NTFSReader.h"
+
 
 using namespace std;
 
@@ -20,6 +20,12 @@ BaseReader* ReadersCreator::CreateReader(FileReader* fileReader)
 	
 	if (strcmp(oemName->OEMName, "NTFS    ") == 0) {
 		return new NTFSReader(fileReader);
+	}
+	if (strcmp(oemName->OEMName, "MSDOS5.0") == 0) {
+		return new FATReader(fileReader);
+	}
+	if (strcmp(oemName->OEMName, "EXFAT   ") == 0) {
+		return new EXFATReader(fileReader);
 	}
 
 	// Можно написать readerы для других файловых систем, досточно реализовать BaseReader

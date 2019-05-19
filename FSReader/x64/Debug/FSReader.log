@@ -1,4 +1,4 @@
 ﻿  FSReader.cpp
-  IteratorsFactory.cpp
+  ReadersCreator.cpp
   Создание кода...
   FSReader.vcxproj -> C:\Projects\FSReader\x64\Debug\FSReader.exe
